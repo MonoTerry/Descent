@@ -6,8 +6,8 @@
 script/source = "extends KinematicBody2D
 
 export (Vector2) var velocity = Vector2(0,0)
-var ACCELERATION = 100;
-var maxXVel = 4000
+var ACCELERATION = 20;
+var maxXVel = 450;
 var jumpForce = 850;
 
 var gravity = 15;
@@ -17,46 +17,29 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-		
-	
 	if is_on_floor():
 		velocity.y = 0;
 	
 	if Input.is_action_just_pressed(\"Up\"):
 		if is_on_floor():
 			velocity.y -= jumpForce;
+	if Input.is_action_pressed(\"Left\"):
+		if velocity.x > -maxXVel:
+			velocity.x -= ACCELERATION;
+	elif Input.is_action_pressed(\"Right\"):
+		if velocity.x < maxXVel:
+			velocity.x += ACCELERATION;
+	else:
+		velocity.x = 0;
 	
-	velocity.y += gravity
+	
+	
+	velocity.y += gravity;
 	move_and_slide(velocity,Vector2(0,-1));
 	print(velocity)
 	
-	
-#	if Input.is_action_just_pressed(\"Reset\"):
-#		get_tree().reload_current_scene()
-#
-#	if Input.is_action_just_pressed(\"Toggle Full\"):
-#		OS.window_fullscreen = !OS.window_fullscreen;
-#
 	pass
-
-func _unhandled_input(event):
-	if event.is_action_pressed(\"Left\"):
-		if velocity.x > -maxXVel:
-			velocity.x -= ACCELERATION;
-			get_tree().set_input_as_handled();
-			
-	elif event.is_action_pressed(\"Right\"):
-		if velocity.x < maxXVel:
-			velocity.x += ACCELERATION;
-			get_tree().set_input_as_handled();
-	else:
-			if is_on_floor():
-				velocity.x = lerp(velocity.x, 0, 0.3);
-			else:
-				velocity.x = lerp(velocity.x, 0, 0.01);
-			get_tree().set_input_as_handled();
-		
-	pass"
+"
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 92.0662
