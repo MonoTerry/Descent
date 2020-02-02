@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sh_yigu-Global-Game-Jam-Terry_-seltetteh-_mastered_.ogg-0c080b1423fbb825b803e8057f979cd3.oggstr"
+
+[deps]
+
+source_file="res://sh_yigu-Global-Game-Jam-Terry_-seltetteh-_mastered_.ogg"
+dest_files=[ "res://.import/sh_yigu-Global-Game-Jam-Terry_-seltetteh-_mastered_.ogg-0c080b1423fbb825b803e8057f979cd3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
